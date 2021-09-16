@@ -14,15 +14,20 @@
     "dependencies": {
         "expo": "~42.0.1",
         "expo-status-bar": "~1.0.4",
-        "husky": "4",
+        "husky": "^4.3.8",
+        "lint-staged": "^11.1.2",
         "react": "16.13.1",
         "react-dom": "16.13.1",
         "react-native": "https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz",
         "react-native-web": "~0.13.12"
     },
-    "husky":{
+    "husky": {
         "hooks": {
-            "pre-commit": "npm run typecheck && npm run format:check && npm run lint"
+            "pre-commit": "npm run typecheck && lint-staged"
+        },
+        "lint-staged": {
+            "src/**/*.{js,jsx,json,ts,tsx}": "eslint",
+            "**/*.{js,jsx,json,ts,tsx}": "prettier --write"
         }
     },
     "devDependencies": {

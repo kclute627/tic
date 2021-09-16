@@ -1,1 +1,1 @@
-let x:number = 0;
+let x =0
