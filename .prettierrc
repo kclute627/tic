@@ -1,0 +1,6 @@
+{
+    "arrowParens": "avoid",
+    "bracketSpacing": true,
+    "htmlWhitespaceSensitivity": "css",
+    "tabWidth": 4
+}
