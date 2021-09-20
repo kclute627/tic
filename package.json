@@ -12,7 +12,10 @@
         "lint": "eslint \"src/**/*.{js,jsx,json,ts,tsx}\""
     },
     "dependencies": {
+        "@expo-google-fonts/delius-unicase": "^0.2.0",
         "expo": "~42.0.1",
+        "expo-app-loading": "^1.1.2",
+        "expo-font": "~9.2.1",
         "expo-status-bar": "~1.0.4",
         "husky": "^4.3.8",
         "lint-staged": "^11.1.2",
@@ -23,6 +26,7 @@
     },
     "husky": {
         "hooks": {
+             "pre-push": "set CI=true&&npm test",
             "pre-commit": "npm run typecheck && lint-staged"
         },
         "lint-staged": {
@@ -36,6 +40,7 @@
         "@types/react-native": "~0.63.2",
         "@typescript-eslint/eslint-plugin": "^4.31.1",
         "@typescript-eslint/parser": "^4.31.1",
+        "babel-plugin-module-resolver": "^4.1.0",
         "eslint": "^7.32.0",
         "eslint-config-prettier": "^8.3.0",
         "eslint-plugin-react": "^7.25.1",
