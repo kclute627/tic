@@ -1,21 +1,18 @@
-
-import React, {ReactNode, ReactElement} from "react";
-import { Text as NativeText, TextProps as NativeTextProps  } from "react-native";
+import React, { ReactNode, ReactElement } from "react";
+import { Text as NativeText, TextProps as NativeTextProps } from "react-native";
 
 type TextProps = {
-    weight: '400' | '700',
-    children: ReactNode
-
-} & NativeTextProps
+    weight: "400" | "700";
+    children: ReactNode;
+} & NativeTextProps;
 
 const defaultProps = {
-    weight: '400'
-}
+    weight: "400",
+};
 export default function Newtext({
     children,
     style,
     weight,
-    
 }: TextProps): ReactElement {
     let fontFamily;
 
@@ -26,7 +23,5 @@ export default function Newtext({
             {children}
         </NativeText>
     );
-
-    
 }
-Newtext.defaultProps = defaultProps
+Newtext.defaultProps = defaultProps;

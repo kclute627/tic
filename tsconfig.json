@@ -13,7 +13,7 @@
             "@utils": ["src/utils"],
             "@config/*": ["src/config/*"],
             "@context/*": ["src/context/*"],
-             "@assets/*": ["assets/*"],
+            "@assets/*": ["assets/*"]
         }
     }
 }

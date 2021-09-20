@@ -26,8 +26,7 @@
     },
     "husky": {
         "hooks": {
-             "pre-push": "set CI=true&&npm test",
-            "pre-commit": "npm run typecheck && lint-staged"
+            "pre-commit": "npm run lint"
         },
         "lint-staged": {
             "src/**/*.{js,jsx,json,ts,tsx}": "eslint",

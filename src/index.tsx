@@ -3,8 +3,7 @@ import { StyleSheet, View } from "react-native";
 
 import { Text, AppBootstrap } from "@components";
 
-export default function App():ReactElement {
-   
+export default function App(): ReactElement {
     return (
         <AppBootstrap>
             <View style={styles.container}>
