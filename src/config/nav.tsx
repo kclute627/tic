@@ -15,8 +15,8 @@ const Stack = createNativeStackNavigator<StackNavParams>();
 export default function Nav(): ReactElement {
     return (
         <NavigationContainer>
-            <Stack.Navigator initialRouteName="Home">
-                <Stack.Screen name="Home" component={Home} />
+            <Stack.Navigator initialRouteName="Home" >
+                <Stack.Screen name="Home" component={Home} options={{headerShown: false}}/>
                 <Stack.Screen name="Game" component={Game} />
             </Stack.Navigator>
         </NavigationContainer>
