@@ -3,7 +3,13 @@ module.exports = {
         node: true,
         es2021: true,
     },
-    extends: ["eslint:recommended", "plugin:react/recommended", "prettier"],
+    extends: [
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "prettier",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended",
+    ],
     parser: "@typescript-eslint/parser",
     parserOptions: {
         ecmaFeatures: {
@@ -19,6 +25,6 @@ module.exports = {
         },
     },
     rules: {
-        "@typescript-eslint/no-unused-vars": "off",
+        // "@typescript-eslint/no-unused-vars": "off",
     },
 };

@@ -2,8 +2,14 @@ import React from "react";
 import { View} from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import {StatusBar} from "expo-status-bar"
+import { ReactElement } from "react";
+import { ReactNode } from "react";
 
-export default function GredBackground() {
+type GredBackgroundProps = {
+    children: ReactNode
+}
+
+export default function GredBackground({children}: GredBackgroundProps): ReactElement {
     return (
         <View style={{ flex: 1 }}>
             <StatusBar style="light" />
@@ -17,6 +23,7 @@ export default function GredBackground() {
                 }}
                 colors={["#0f78af", "#154c79"]}
             />
+            {children}
         </View>
     );
 }
