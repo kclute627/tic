@@ -2,6 +2,7 @@ import React from "react";
 import { ReactElement } from "react";
 import { View, TouchableOpacity } from "react-native";
 import { BoardState, BoardResult } from "@utils";
+import { styles } from "./board-styles";
 import BoardLine from "./board_line";
 import Text from "../text/newtext";
 
@@ -21,34 +22,18 @@ export default function Board({
     onCellPressed,
 }: BoardProps): ReactElement {
     return (
-        <View
-            style={{
-                width: size,
-                height: size,
-                backgroundColor: "green",
-                flexDirection: "row",
-                flexWrap: "wrap",
-            }}
-        >
+        <View style={[styles.container, { width: size, height: size }]}>
             {state.map((cell, i) => (
                 <TouchableOpacity
                     disabled={cell !== null || disabled}
                     onPress={() => onCellPressed && onCellPressed(i)}
-                    style={{
-                        width: "33.33%",
-                        height: "33.33%",
-                        backgroundColor: "#fff",
-                        borderWidth: 1,
-                        alignItems: "center",
-                        justifyContent: "center",
-                    }}
+                    style={[styles.cell, styles[`cell${i}`as 'cell']]}
                     key={i}
                 >
-                    <Text style={{ fontSize: size / 8 }}>{cell}</Text>
+                    <Text style={[styles.text, {fontSize: size / 8} ]}>{cell}</Text>
                 </TouchableOpacity>
             ))}
-           {gameResult && <BoardLine size={size} gameResult={gameResult} />}
-           
+            {gameResult && <BoardLine size={size} gameResult={gameResult} />}
         </View>
     );
 }
