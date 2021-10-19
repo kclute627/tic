@@ -36,7 +36,7 @@ export default function Home({ navigation }: HomeProps): ReactElement {
                     />
                     <Button
                         btnText="Settings"
-                      
+                        onPress={()=>navigation.navigate('Settings')}
                         style={styles.btns}
                     />
                 </View>
