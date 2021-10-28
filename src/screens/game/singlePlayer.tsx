@@ -2,7 +2,7 @@ import React, { ReactElement, useState, useEffect } from "react";
 import styles from "./singlePlayer_styles";
 import { GraidentBackground, Text, Button } from "@components";
 import { SafeAreaView, Dimensions, View } from "react-native";
-
+import {useSettings, difficulty} from '@context/Settings-context'
 import { Board } from "@components";
 import {
     BoardState,
@@ -12,8 +12,7 @@ import {
     Cell,
     useSounds,
 } from "@utils";
-import { Audio } from "expo-av";
-import * as Haptics from "expo-haptics";
+
 
 const { height, width } = Dimensions.get("screen");
 
@@ -61,6 +60,8 @@ export default function SinglePlayer(): ReactElement {
 
     const playSound = useSounds();
 
+    const {settings} = useSettings()
+
     const handleOnCellPressed = (cell: number): void => {
         if (turn !== "HUMAN") return;
 
@@ -107,7 +108,7 @@ export default function SinglePlayer(): ReactElement {
                     setIsHumanMax(false);
                     setTurn("HUMAN");
                 } else {
-                    const best = bestMove(state, !isHumanMax, 0, 1);
+                    const best = bestMove(state, !isHumanMax, 0, parseInt( settings ? settings.difficulty : '-1'));
                     insertCell(best, isHumanMax ? "o" : "x");
                     setTurn("HUMAN");
                 }
@@ -124,7 +125,7 @@ export default function SinglePlayer(): ReactElement {
         <GraidentBackground>
             <SafeAreaView style={styles.container}>
                 <View>
-                    <Text style={styles.difficulty}>Difficulty: Hard</Text>
+                    <Text style={styles.difficulty}>Difficulty: {settings ? difficulty[settings?.difficulty] : 'Hard'}</Text>
                     <View style={styles.results}>
                         <View style={styles.resultsBox}>
                             <Text style={styles.resultsTitle}>Wins</Text>

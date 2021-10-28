@@ -1,19 +1,25 @@
-import React, { ReactElement, useState } from "react";
+import React, { ReactElement } from "react";
 import { View, ScrollView, TouchableOpacity, Switch } from "react-native";
 import styles from "./Serrings-styles";
 
 import { colors } from "@utils";
 import { GraidentBackground, Text } from "@components";
+import { difficulty, useSettings} from "@context/Settings-context";
 
-export default function Settings(): ReactElement {
-    const difficulty = {
-        "1": "Beginner",
-        "3": "Intermediate",
-        "4": "Hard",
-        "-1": "Impossible",
-    };
-    const [sound, setSound] = useState(false);
-    const [vibrations, setVibrations] = useState(false)
+
+
+export default function Settings(): ReactElement | null {
+    // const [sound, setSound] = useState(false);
+    // const [vibrations, setVibrations] = useState(false)
+
+  
+    const {settings, saveSetting} = useSettings()
+    
+
+   
+
+    if (!settings) return null;
+
     return (
         <GraidentBackground>
             <ScrollView contentContainerStyle={styles.container}>
@@ -23,10 +29,32 @@ export default function Settings(): ReactElement {
                         {Object.keys(difficulty).map(level => {
                             return (
                                 <TouchableOpacity
-                                    style={styles.choice}
+                                onPress={()=>{
+                                    saveSetting('difficulty', level as keyof typeof difficulty)
+                                }}
+                                    style={[
+                                        styles.choice,
+                                        {
+                                            backgroundColor:
+                                                settings.difficulty === level
+                                                    ? colors.darkPurple
+                                                    : colors.lightPurple,
+                                        },
+                                    ]}
                                     key={level}
                                 >
-                                    <Text style={styles.choiceText}>
+                                    <Text
+                                        style={[
+                                            styles.choiceText,
+                                            {
+                                                color:
+                                                    settings.difficulty ===
+                                                    level
+                                                        ? colors.lightPurple
+                                                        : colors.lightGreen,
+                                            },
+                                        ]}
+                                    >
                                         {
                                             difficulty[
                                                 level as "1" | "3" | "4" | "-1"
@@ -47,9 +75,9 @@ export default function Settings(): ReactElement {
                         }}
                         thumbColor={colors.lightGreen}
                         ios_backgroundColor={colors.purple}
-                        value={sound}
+                        value={settings.sounds}
                         onValueChange={() => {
-                            setSound(!sound);
+                            saveSetting('sounds', !settings.sounds)
                         }}
                     />
                 </View>
@@ -62,9 +90,9 @@ export default function Settings(): ReactElement {
                         }}
                         thumbColor={colors.lightGreen}
                         ios_backgroundColor={colors.purple}
-                        value={vibrations}
+                        value={settings.haptics}
                         onValueChange={() => {
-                            setVibrations(!vibrations);
+                            saveSetting('haptics', !settings.haptics)
                         }}
                     />
                 </View>
