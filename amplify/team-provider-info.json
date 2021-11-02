@@ -8,7 +8,8 @@
       "DeploymentBucketName": "amplify-tictac-dev-83604-deployment",
       "UnauthRoleName": "amplify-tictac-dev-83604-unauthRole",
       "StackName": "amplify-tictac-dev-83604",
-      "StackId": "arn:aws:cloudformation:us-east-2:482800432370:stack/amplify-tictac-dev-83604/0107a970-37f4-11ec-8726-06bc597ae166"
+      "StackId": "arn:aws:cloudformation:us-east-2:482800432370:stack/amplify-tictac-dev-83604/0107a970-37f4-11ec-8726-06bc597ae166",
+      "AmplifyAppId": "d38k7ocv1rt7et"
     },
     "categories": {
       "auth": {

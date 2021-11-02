@@ -1,22 +1,26 @@
 import React, { ReactElement } from "react";
 import { View, ScrollView, TouchableOpacity, Switch } from "react-native";
 import styles from "./Serrings-styles";
-
+import { useAuth } from "@context/Auth-context";
 import { colors } from "@utils";
 import { GraidentBackground, Text } from "@components";
-import { difficulty, useSettings} from "@context/Settings-context";
+import { difficulty, useSettings } from "@context/Settings-context";
+import { StackNavParams } from "@config/nav";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
 
+   type SettingProps = {
+    navigation: NativeStackNavigationProp<StackNavParams, "Login">;
+};
 
-export default function Settings(): ReactElement | null {
+
+export default function Settings({ navigation }: SettingProps): ReactElement | null {
     // const [sound, setSound] = useState(false);
     // const [vibrations, setVibrations] = useState(false)
 
-  
-    const {settings, saveSetting} = useSettings()
-    
+    const { settings, saveSetting } = useSettings();
 
-   
+    const { user } = useAuth();
 
     if (!settings) return null;
 
@@ -29,9 +33,12 @@ export default function Settings(): ReactElement | null {
                         {Object.keys(difficulty).map(level => {
                             return (
                                 <TouchableOpacity
-                                onPress={()=>{
-                                    saveSetting('difficulty', level as keyof typeof difficulty)
-                                }}
+                                    onPress={() => {
+                                        saveSetting(
+                                            "difficulty",
+                                            level as keyof typeof difficulty
+                                        );
+                                    }}
                                     style={[
                                         styles.choice,
                                         {
@@ -77,7 +84,7 @@ export default function Settings(): ReactElement | null {
                         ios_backgroundColor={colors.purple}
                         value={settings.sounds}
                         onValueChange={() => {
-                            saveSetting('sounds', !settings.sounds)
+                            saveSetting("sounds", !settings.sounds);
                         }}
                     />
                 </View>
@@ -92,10 +99,19 @@ export default function Settings(): ReactElement | null {
                         ios_backgroundColor={colors.purple}
                         value={settings.haptics}
                         onValueChange={() => {
-                            saveSetting('haptics', !settings.haptics)
+                            saveSetting("haptics", !settings.haptics);
                         }}
                     />
                 </View>
+                {user && (
+                    <TouchableOpacity
+                        onPress={() => {
+                            navigation.navigate("ChangePassword");
+                        }}
+                    >
+                        <Text style={styles.linkText}>Change Password</Text>
+                    </TouchableOpacity>
+                )}
             </ScrollView>
         </GraidentBackground>
     );

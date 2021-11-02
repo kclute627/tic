@@ -1,5 +1,5 @@
 import React from "react";
-import { View} from "react-native";
+import { SafeAreaView} from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import {StatusBar} from "expo-status-bar"
 import { ReactElement } from "react";
@@ -11,7 +11,7 @@ type GredBackgroundProps = {
 
 export default function GredBackground({children}: GredBackgroundProps): ReactElement {
     return (
-        <View style={{ flex: 1 }}>
+        <SafeAreaView style={{ flex: 1 }}>
             <StatusBar style="light" />
             <LinearGradient
                 style={{
@@ -24,6 +24,6 @@ export default function GredBackground({children}: GredBackgroundProps): ReactEl
                 colors={["#0f78af", "#154c79"]}
             />
             {children}
-        </View>
+        </SafeAreaView>
     );
 }

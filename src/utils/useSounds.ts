@@ -1,6 +1,6 @@
 import { useRef, useEffect } from "react";
 import { Audio } from "expo-av";
-import * as Haptics from "expo-haptics";
+import * as Haptics from "expo-haptics"; 
 import { useSettings } from "@context/Settings-context";
   type SoundType = 'pop1' | 'pop2' | 'win' | 'draw' | 'loss'
 export default function useSounds(): (sound : SoundType) => void {

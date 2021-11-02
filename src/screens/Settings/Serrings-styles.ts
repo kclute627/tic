@@ -32,6 +32,12 @@ import { StyleSheet } from 'react-native'
          flexDirection: 'row',
          justifyContent: 'space-between',
          alignItems: 'center'
+     },
+     linkText: {
+         color: colors.lightGreen,
+        
+         textDecorationLine: 'underline',
+         fontSize: 18,
      }
 
 })

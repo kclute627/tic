@@ -37,7 +37,7 @@ function useSettings(): SettingsContextType {
     }
     return context;
 }
-function SettingsProvider(props: {childer: ReactNode}): ReactElement {
+function SettingsProvider(props: {children: ReactNode}): ReactElement {
       const [settings, setSetting] = useState<SettingsType | null>(null);
 
 
