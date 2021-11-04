@@ -16,9 +16,9 @@
         "tictac36c2de4d": {}
       },
       "function": {
-        "postConfirmation": {
+        "postconfirmation2": {
           "deploymentBucketName": "amplify-tictac-dev-83604-deployment",
-          "s3Key": "amplify-builds/postConfirmation-706b4e4a695043675430-build.zip"
+          "s3Key": "amplify-builds/postconfirmation2-436c3966376e4d703055-build.zip"
         }
       }
     }
