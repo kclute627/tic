@@ -1,5 +1,25 @@
-type Todo @model {
-  id: ID!
-  name: String!
-  description: String
+
+type Player
+    @model
+    @key(fields: ["username"])
+    @auth(
+        rules: [
+            { allow: private, operations: [read, create, update, delete] }
+            {
+                allow: owner
+                ownerField: "username"
+                operations: [read, create, update, delete]
+            }
+            {
+                allow: private
+                provider: iam
+                operations: [read, create, update, delete]
+            }
+        ]
+    ) {
+    id: ID!
+    cognitoID: String!
+    username: String!
+    name: String!
+    email: String
 }

@@ -26,7 +26,9 @@ type ChangePasswordProps = {
     navigation: ChangePasswordScreenNavProps;
 };
 
-export default function forgotPassword({navigation}: ChangePasswordProps): ReactElement {
+export default function forgotPassword({
+    navigation,
+}: ChangePasswordProps): ReactElement {
     const [form, setForm] = useState({
         newPassword: "",
         oldPassword: "",
@@ -40,12 +42,12 @@ export default function forgotPassword({navigation}: ChangePasswordProps): React
     const changePassword = async () => {
         setLoading(true);
         try {
-            await Auth.changePassword(user, oldPassword, newPassword)
-            Alert.alert('Password Changed!')
-            
-            navigation.navigate('Settings')
+            await Auth.changePassword(user, oldPassword, newPassword);
+            Alert.alert("Password Changed!");
+
+            navigation.navigate("Settings");
         } catch (error) {
-            Alert.alert('Error!!', error.message || "Error Occurred!!")
+            Alert.alert("Error!!", error.message || "Error Occurred!!");
         }
         setLoading(false);
     };
@@ -72,6 +74,7 @@ export default function forgotPassword({navigation}: ChangePasswordProps): React
                             formHelper(value, "oldPassword");
                         }}
                         placeholder="Old Password"
+                        secureTextEntry
                         style={{ marginBottom: 20 }}
                         returnKeyType="next"
                         onSubmitEditing={() => {
@@ -87,6 +90,7 @@ export default function forgotPassword({navigation}: ChangePasswordProps): React
                         style={{ marginBottom: 20 }}
                         ref={passwordRef}
                         returnKeyType="done"
+                        secureTextEntry
                     />
 
                     <Button

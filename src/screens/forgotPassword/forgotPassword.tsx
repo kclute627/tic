@@ -102,20 +102,22 @@ export default function forgotPassword({
                                 placeholder="Verification Code"
                                 style={{ marginBottom: 20 }}
                                 returnKeyType="next"
+                                secureTextEntry
                                 onSubmitEditing={() => {
                                     passwordRef.current?.focus();
                                 }}
                             />
                             <TextInput
-                            value={password}
-                            onChangeText={value => {
-                                formHelper(value, "password");
-                            }}
-                            ref={passwordRef}
-                            placeholder="New Password"
-                            style={{ marginBottom: 20 }}
-                            returnKeyType="done"
-                          
+                                value={password}
+                                onChangeText={value => {
+                                    formHelper(value, "password");
+                                }}
+                                ref={passwordRef}
+                                secureTextEntry
+
+                                placeholder="New Password"
+                                style={{ marginBottom: 20 }}
+                                returnKeyType="done"
                             />
                         </>
                     )}

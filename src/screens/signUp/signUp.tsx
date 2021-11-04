@@ -33,10 +33,10 @@ export default function SignUp({
     const unconfirmedUsername = route.params?.username;
 
     const [form, setForm] = useState({
-        userName: "test2344",
+        userName: "kwc3333",
         password: "12345678",
         name: "Test Name",
-        email: "deondref3@gpromotedx.com",
+        email: "nux71931@cuoly.com",
     });
     const [loading, setLoading] = useState(false);
     const [step, setStep] = useState<"signUp" | "otp">(
@@ -101,18 +101,20 @@ export default function SignUp({
         setLoading(false);
     };
     const confirmCode = async (code: string) => {
+        setConfirming(true);
         try {
-            setConfirming(true);
+            
             await Auth.confirmSignUp(form.userName, code);
-            setConfirming(false);
+           
             navigation.navigate("Login");
             Alert.alert(
                 "Success!",
                 "You Can now log in with your username and password"
             );
         } catch (error) {
-            Alert.alert("Error", "Invalad Code");
-        }
+            Alert.alert("Error!!", error.message || "Error!!");
+        } 
+        setConfirming(false);
     };
     const resendCode = async (username: string) => {
         setResending(true);
