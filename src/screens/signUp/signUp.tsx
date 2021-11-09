@@ -258,7 +258,8 @@ import { useHeaderHeight } from "@react-navigation/elements";
 
 import { NativeStackNavigationProp as StackNavigationProp } from "@react-navigation/native-stack";
 import {StackNavParams as StackNavigatorParams } from "@config/nav";
-import { Auth } from "aws-amplify";
+import { Auth, API, graphqlOperation } from "aws-amplify";
+import {createPlayer, createUser} from '../../graphql/mutations'
 import OTPInput from "@twotalltotems/react-native-otp-input";
 import styles from "./RegStyles";
 import { colors } from "@utils";
@@ -276,8 +277,8 @@ export default function SignUp({ navigation, route }: SignUpProps): ReactElement
     const emailRef = useRef<NativeTextInput | null>(null);
     const nameRef = useRef<NativeTextInput | null>(null);
     const [form, setForm] = useState({
-        username: "foyeri9436@dukeoo.com",
-        email: "foyeri9436@dukeoo.com",
+        username: "jdz73034@cuoly.com",
+        email: "jdz73034@cuoly.com",
         name: "Kyle",
         password: "12345678",
     });
@@ -289,6 +290,8 @@ export default function SignUp({ navigation, route }: SignUpProps): ReactElement
     const setFormInput = (key: keyof typeof form, value: string) => {
         setForm({ ...form, [key]: value });
     };
+
+    const {username, name, email, password} = form
 
     const signUp = async () => {
         setLoading(true);
@@ -311,8 +314,21 @@ export default function SignUp({ navigation, route }: SignUpProps): ReactElement
 
     const confirmCode = async (code: string) => {
         setConfirming(true);
+        const playerDetials = {
+            username,
+            name,
+            email,
+            id: password,
+            cogneitoId: email
+
+        }
         try {
             await Auth.confirmSignUp(form.username || unconfirmedUsername || "", code);
+
+
+            const createPlayerInApi = await API.graphql(graphqlOperation(createUser, {input: playerDetials}))
+
+
             navigation.navigate("Login");
             Alert.alert("Success!", "You can now login with your account.");
         } catch (error) {

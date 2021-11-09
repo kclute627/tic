@@ -1,10 +1,4 @@
-import React, {
-    ReactElement,
-    ReactNode,
-    useState,
-    useEffect,
-    
-} from "react";
+import React, { ReactElement, ReactNode, useState, useEffect } from "react";
 import { Auth, Hub } from "aws-amplify";
 
 import {
@@ -13,7 +7,7 @@ import {
     DeliusUnicase_700Bold,
 } from "@expo-google-fonts/delius-unicase";
 import AppLoading from "expo-app-loading";
-import {useAuth} from "@context/Auth-context"
+import { useAuth } from "@context/Auth-context";
 
 type AppBootstrapProps = {
     children: ReactNode;
@@ -27,9 +21,7 @@ export default function AppBootstrap({
         DeliusUnicase_700Bold,
     });
     const [authLoaded, setAuthLoaded] = useState(false);
-    const {setUser} = useAuth()
-
-
+    const { setUser } = useAuth();
 
     const checkAuthUser = async () => {
         try {
@@ -40,38 +32,29 @@ export default function AppBootstrap({
         }
         setAuthLoaded(true);
     };
-    function hubListner(hubData : any){
-
-        const {data, event} = hubData.payload
+    function hubListner(hubData: any) {
+        const { data, event } = hubData.payload;
 
         switch (event) {
             case "signOut":
-                setUser(null)
+                setUser(null);
                 break;
             case "signIn":
-                setUser(data)
+                setUser(data);
                 break;
             default:
                 break;
         }
-
     }
 
     useEffect(() => {
         checkAuthUser();
 
-        Hub.listen('auth', hubListner);
+        Hub.listen("auth", hubListner);
 
-        return ()=>{
-            Hub.remove('auth', hubListner)
-        }
-
+        return () => {
+            Hub.remove("auth", hubListner);
+        };
     }, []);
-    return fontLoaded && authLoaded ? (
-        <>
-            {children}
-        </>
-    ) : (
-        <AppLoading />
-    );
+    return fontLoaded && authLoaded ? <>{children}</> : <AppLoading />;
 }

@@ -13,13 +13,7 @@
     },
     "categories": {
       "auth": {
-        "tictac36c2de4d": {}
-      },
-      "function": {
-        "postconfirmation2": {
-          "deploymentBucketName": "amplify-tictac-dev-83604-deployment",
-          "s3Key": "amplify-builds/postconfirmation2-436c3966376e4d703055-build.zip"
-        }
+        "tictac01965193": {}
       }
     }
   }

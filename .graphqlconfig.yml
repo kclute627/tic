@@ -1,5 +1,5 @@
 projects:
-  tictac:
+  tic4444:
     schemaPath: graphql/schema.json
     includes:
       - src/graphql/**/*.ts
@@ -10,6 +10,3 @@ projects:
         codeGenTarget: typescript
         generatedFileName: src/API.ts
         docsFilePath: src/graphql
-extensions:
-  amplify:
-    version: 3
