@@ -13,7 +13,21 @@
     },
     "categories": {
       "auth": {
-        "tictac01965193": {}
+        "ticnewnew": {}
+      },
+      "function": {
+        "ticnewnewPostConfirmation": {
+          "deploymentBucketName": "amplify-tictac-dev-83604-deployment",
+          "s3Key": "amplify-builds/ticnewnewPostConfirmation-70326d34614e4c426849-build.zip"
+        },
+        "ticnewnewpreAuth": {
+          "deploymentBucketName": "amplify-tictac-dev-83604-deployment",
+          "s3Key": "amplify-builds/ticnewnewpreAuth-686e5579707757464b76-build.zip"
+        },
+        "ticPreConfirmation2": {
+          "deploymentBucketName": "amplify-tictac-dev-83604-deployment",
+          "s3Key": "amplify-builds/ticPreConfirmation2-76356c586a754b754947-build.zip"
+        }
       }
     }
   }

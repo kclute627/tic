@@ -1,10 +1,10 @@
 {
-  "AppSyncApiName": "tic4444",
+  "AppSyncApiName": "newestTic",
   "DynamoDBBillingMode": "PAY_PER_REQUEST",
   "DynamoDBEnableServerSideEncryption": false,
   "AuthCognitoUserPoolId": {
     "Fn::GetAtt": [
-      "authtictac01965193",
+      "authticnewnew",
       "Outputs.UserPoolId"
     ]
   }

@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "auth": {
+      "ticnewnew": [
+        "create",
+        "read",
+        "update"
+      ]
+    },
+    "api": {
+      "newestTic": [
+        "Query",
+        "Mutation"
+      ]
+    }
+  },
+  "lambdaLayers": []
+}

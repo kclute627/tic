@@ -258,8 +258,8 @@ import { useHeaderHeight } from "@react-navigation/elements";
 
 import { NativeStackNavigationProp as StackNavigationProp } from "@react-navigation/native-stack";
 import {StackNavParams as StackNavigatorParams } from "@config/nav";
-import { Auth, API, graphqlOperation } from "aws-amplify";
-import {createPlayer, createUser} from '../../graphql/mutations'
+import { Auth } from "aws-amplify";
+
 import OTPInput from "@twotalltotems/react-native-otp-input";
 import styles from "./RegStyles";
 import { colors } from "@utils";
@@ -277,8 +277,8 @@ export default function SignUp({ navigation, route }: SignUpProps): ReactElement
     const emailRef = useRef<NativeTextInput | null>(null);
     const nameRef = useRef<NativeTextInput | null>(null);
     const [form, setForm] = useState({
-        username: "jdz73034@cuoly.com",
-        email: "jdz73034@cuoly.com",
+        username: "ybovezvham@email.ucms.edu.pk",
+        email: "ybovezvham@email.ucms.edu.pk",
         name: "Kyle",
         password: "12345678",
     });
@@ -291,13 +291,14 @@ export default function SignUp({ navigation, route }: SignUpProps): ReactElement
         setForm({ ...form, [key]: value });
     };
 
-    const {username, name, email, password} = form
+  
 
     const signUp = async () => {
         setLoading(true);
         const { username, password, email, name } = form;
         try {
             await Auth.signUp({
+                
                 username,
                 password,
                 attributes: {
@@ -314,19 +315,12 @@ export default function SignUp({ navigation, route }: SignUpProps): ReactElement
 
     const confirmCode = async (code: string) => {
         setConfirming(true);
-        const playerDetials = {
-            username,
-            name,
-            email,
-            id: password,
-            cogneitoId: email
-
-        }
+        
         try {
             await Auth.confirmSignUp(form.username || unconfirmedUsername || "", code);
 
 
-            const createPlayerInApi = await API.graphql(graphqlOperation(createUser, {input: playerDetials}))
+           
 
 
             navigation.navigate("Login");

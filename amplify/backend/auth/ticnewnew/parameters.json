@@ -1,8 +1,8 @@
 {
-    "identityPoolName": "tictac01965193_identitypool_01965193",
+    "identityPoolName": "tictac68371c91_identitypool_68371c91",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "tictac01965193",
-    "userPoolName": "tictac01965193_userpool_01965193",
+    "resourceNameTruncated": "tictac68371c91",
+    "userPoolName": "tictac68371c91_userpool_68371c91",
     "autoVerifiedAttributes": [
         "email"
     ],
@@ -21,6 +21,7 @@
         "email",
         "name"
     ],
+    "aliasAttributes": [],
     "userpoolClientGenerateSecret": false,
     "userpoolClientRefreshTokenValidity": 30,
     "userpoolClientWriteAttributes": [
@@ -29,10 +30,10 @@
     "userpoolClientReadAttributes": [
         "email"
     ],
-    "userpoolClientLambdaRole": "tictac01965193_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "ticnew68371c91_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "01965193",
-    "resourceName": "tictac01965193",
+    "sharedId": "68371c91",
+    "resourceName": "ticnewnew",
     "authSelections": "identityPoolAndUserPool",
     "authRoleArn": {
         "Fn::GetAtt": [
@@ -46,15 +47,23 @@
             "Arn"
         ]
     },
-    "useDefault": "default",
+    "useDefault": "manual",
+    "thirdPartyAuth": false,
+    "userPoolGroups": false,
+    "adminQueries": false,
     "triggers": "{}",
-    "userPoolGroupList": [],
+    "hostedUI": false,
+    "userPoolGroupList": [
+        "Admin"
+    ],
     "serviceName": "Cognito",
     "usernameCaseSensitive": false,
+    "useEnabledMfas": false,
     "parentStack": {
         "Ref": "AWS::StackId"
     },
     "breakCircularDependency": true,
     "permissions": [],
-    "dependsOn": []
+    "dependsOn": [],
+    "authProviders": []
 }

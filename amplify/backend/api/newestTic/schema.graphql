@@ -1,0 +1,39 @@
+type User
+    @model
+    @auth(
+        rules: [
+            { allow: groups, groups: ["Admin"] }
+            { allow: owner, ownerField: "username", operations: [read] }
+            {allow: private, provider: iam, operations: [read, create, update, delete]}
+            {allow: private,  operations: [read]}
+        ]
+    ) {
+   id: ID!
+   cognitoID: String!
+   name: String!
+   username: String!
+   email: AWSEmail!
+}
+
+
+type Game @model {
+    id: ID!
+    status: GameStatus!
+    owners: [String!]!
+    initiator: String!
+    turn: String!
+    state: [Symbol]!
+    winner: String
+}
+
+enum GameStatus {
+    REQUESTED
+    DECLINED
+    ACTIVE
+    FINISHED
+    CANCELLED
+}
+enum Symbol{
+    x
+    o
+}
